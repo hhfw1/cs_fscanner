@@ -2,8 +2,9 @@ Config = {}
 
 -- 'QB' = For QBCore or QBOX Framework
 -- 'ESX' = For ESX Framework
+-- false = For Standalone Mode
 
-Config.ServerType = 'QB'    --QB|ESX
+Config.ServerType = 'QB'    --QB|ESX|false
 
 Config.OpenSettings = {
     command = {
