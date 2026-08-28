@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CodeStudio Finger Scanner</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div id="app" class="hidden">
+            <div id="drag-info-text" class="drag-info hidden">DRAG TO MOVE • CLICK BUTTON AGAIN TO LOCK</div>
+
+            <img src="scanner.png" alt="Scanner Device" class="device-img">
+            <div id="physical-scan-btn" class="hardware-scanner" title="Click to Scan"></div>
+            <div id="drag-handle-btn" class="bottom-drag-btn"></div>
+
+            <div class="screen">
+                <div id="lock-screen" class="lock-overlay">
+                    <span class="lock-eyebrow">CodeStudio Scripts</span>
+                    <div class="lock-icon-wrap">
+                        <span class="lock-ring"></span>
+                        <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h2 class="lock-title">WELCOME TO<br>LOS SANTOS</h2>
+                    <p class="lock-subtitle blink">PRESS TO START</p>
+                </div>
+
+                <header class="screen-header">
+                    <span class="header-label"><i class="status-led"></i>LS SCAN // OS v2</span>
+                    <button id="btn-close" class="close-btn">&times;</button>
+                </header>
+
+                <main class="content-area">
+                    <section id="view-scan" class="view active">
+                        <div class="scan-wrapper">
+                            <div class="fingerprint-box">
+                                <span class="reticle corner-tl"></span>
+                                <span class="reticle corner-tr"></span>
+                                <span class="reticle corner-bl"></span>
+                                <span class="reticle corner-br"></span>
+                                <span class="radar-ring"></span>
+                                <svg class="fingerprint-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <path d="M12 2a10 10 0 0 0-10 10 1 1 0 0 0 2 0 8 8 0 0 1 16 0 1 1 0 0 0 2 0 10 10 0 0 0-10-10zM8 12a4 4 0 0 1 8 0 1 1 0 0 0 2 0 6 6 0 0 0-12 0 1 1 0 0 0 2 0zM12 8a2 2 0 0 0-2 2 1 1 0 0 1-2 0 4 4 0 0 1 8 0 1 1 0 0 1-2 0 2 2 0 0 0-2-2z"/>
+                                    <path d="M12 16a2 2 0 0 1-2-2 1 1 0 0 0-2 0 4 4 0 0 0 8 0 1 1 0 0 0-2 0 2 2 0 0 1-2 2z"/>
+                                </svg>
+                                <div id="scan-laser" class="laser hidden"></div>
+                            </div>
+                            <p id="scan-status" class="status-text text-muted">AWAITING FINGERPRINT</p>
+                        </div>
+                    </section>
+
+                    <section id="view-result" class="view hidden">
+                        <h3 class="view-title text-success">MATCH FOUND</h3>
+                        <p class="view-subtitle">BIOMETRIC RECORD RETRIEVED</p>
+
+                        <div class="profile-section">
+                            <div class="profile-pic-border">
+                                <span class="reticle corner-tl"></span>
+                                <span class="reticle corner-tr"></span>
+                                <span class="reticle corner-bl"></span>
+                                <span class="reticle corner-br"></span>
+                                <img id="res-image" src="" alt="Profile" class="profile-pic">
+                            </div>
+                        </div>
+
+                        <div class="data-list">
+                            <div class="data-item">
+                                <label>FINGER ID</label>
+                                <span id="res-id" class="copy-click">---</span>
+                            </div>
+                            <div class="data-item">
+                                <label>FULL NAME</label>
+                                <span id="res-name">---</span>
+                            </div>
+                            <div class="data-item">
+                                <label>DATE OF BIRTH</label>
+                                <span id="res-dob">---</span>
+                            </div>
+                            <div class="data-item">
+                                <label>GENDER</label>
+                                <span id="res-gender">---</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="view-logs" class="view hidden">
+                        <div class="logs-header">
+                            <h3 class="view-title">DATABASE LOGS</h3>
+                            <button id="btn-clear-logs" class="clear-btn">CLR</button>
+                        </div>
+                        <div id="log-list" class="log-container"></div>
+                    </section>
+                </main>
+
+                <nav class="screen-nav">
+                    <button class="nav-btn active" data-target="view-scan">SCAN</button>
+                    <button class="nav-btn" data-target="view-logs">LOGS</button>
+                </nav>
+            </div>
+
+            <div id="notification" class="notification hidden">Copied</div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
