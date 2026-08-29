@@ -19,3 +19,4 @@ When used, it will print the scanned user’s information directly, making it us
 
 <img width="275" height="500" src="https://github.com/user-attachments/assets/b325fb3d-ed18-491e-95f2-1eaaca39c41c" />
 <img width="275" height="500" src="https://github.com/user-attachments/assets/9f53b47a-c1c1-45c0-a6fb-6bddad06a59f" />
+<img width="260" height="500" src="https://github.com/user-attachments/assets/313a6af4-8cc6-4f23-b19a-73eb3c2be8af" />
